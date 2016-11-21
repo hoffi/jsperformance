@@ -45,7 +45,7 @@ module.exports = function(config) {
 
     var conf = karmaBase;
     conf.logLevel = config.LOG_WARN;
-    conf.reporters = ['saucelabs'];
+    conf.reporters.push('saucelabs');
     conf.customLaunchers = customLaunchers;
     conf.browsers = Object.keys(customLaunchers);
     conf.sauceLabs = {
