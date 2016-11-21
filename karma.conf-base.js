@@ -10,11 +10,10 @@ module.exports = {
         {pattern: 'src/**/*.js', included: true},
         'test/testMain.js'
     ],
-    reporters: ['progress'],
+    reporters: ['dots'],
     port: 9876,
     colors: true,
     autoWatch: false,
     singleRun: true,
-    browsers: ['Chrome'],
     browserNoActivityTimeout: 1000000
 };

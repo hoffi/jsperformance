@@ -5,5 +5,6 @@ var karmaBase = require("./karma.conf-base.js");
 
 module.exports = function(config) {
   karmaBase.logLevel = config.LOG_WARN;
+  karmaBase.browsers = [config.browser];
   config.set(karmaBase);
 };

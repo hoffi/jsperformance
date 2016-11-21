@@ -4,7 +4,7 @@ define("loop/underscoreEach", [], function () {
 
     var UnderscoreEach = function () {
         this.array = [];
-        this.count = 10000000;
+        this.count = 1000000;
     };
 
     UnderscoreEach.prototype.prepare = function () {

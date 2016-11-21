@@ -18,7 +18,7 @@ define("util/measure", ["uaparser"], function (UAParser) {
         var startDate = new Date();
         testModule.run();
         var duration = new Date() - startDate;
-        var throughput = testModule.count / duration;
+        var throughput = (testModule.count / duration).toFixed(3);
 
         if (testModule.clean) {
             testModule.clean();

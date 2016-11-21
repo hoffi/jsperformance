@@ -4,7 +4,7 @@ define("loop/forInLoop", [], function () {
 
     var ForInLoop = function () {
         this.array = [];
-        this.count = 10000000;
+        this.count = 1000000;
     };
 
     ForInLoop.prototype.prepare = function () {

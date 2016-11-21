@@ -3,7 +3,7 @@
 define("loop/forCountLoop", [], function () {
 
     var ForCountLoop = function () {
-        this.count = 10000000;
+        this.count = 1000000;
     };
 
     ForCountLoop.prototype.run = function () {
