@@ -16,7 +16,12 @@
     "karma-jasmine": "~1.0.2",
     "karma-phantomjs-launcher": "~1.0.2",
     "karma-requirejs": "~1.1.0",
-    "karma-sauce-launcher": "~1.1.0",
-    "requirejs": "~2.3.2"
+    "karma-sauce-launcher": "~1.1.0"
+  },
+  "dependencies": {
+    "lodash": "~4.17.2",
+    "requirejs": "~2.3.2",
+    "ua-parser-js": "~0.7.12",
+    "underscore": "~1.8.3"
   }
 }

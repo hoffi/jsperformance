@@ -1,4 +1,11 @@
-define("util/measure", [], function () {
+define("util/measure", ["uaparser"], function (UAParser) {
+
+    function getBrowser() {
+        var parser = new UAParser();
+        parser.setUA(window.navigator.userAgent);
+        var a = parser.getResult();
+        return a.browser.name + " " + a.browser.version + "; " + a.os.name + " " + a.os.version;
+    }
 
     var Measure = function () {
     };
@@ -17,7 +24,14 @@ define("util/measure", [], function () {
             testModule.clean();
         }
 
-        callback({ group: group, name: name, duration: duration, count: testModule.count, throughput: throughput });
+        callback({
+            group: group,
+            name: name,
+            duration: duration,
+            count: testModule.count,
+            throughput: throughput,
+            agent: getBrowser()
+        });
     };
 
     return Measure;

@@ -3,9 +3,10 @@ module.exports = {
     basePath: '.',
     frameworks: ["jasmine"],
     files: [
-        'lib/requirejs-2.3.2.min.js',
-        'lib/underscore-1.8.3.min.js',
-        {pattern: 'lib/lodash-4.17.2.min.js', included: false},
+        'node_modules/requirejs/require.js',
+        'lib/ua-parser.min.js',
+        'node_modules/underscore/underscore-min.js',
+        {pattern: 'node_modules/lodash/lodash.min.js', included: false},
         {pattern: 'src/**/*.js', included: true},
         'test/testMain.js'
     ],
