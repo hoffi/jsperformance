@@ -1,10 +1,11 @@
-define("index", ["underscore", "util/measure", "util/reporter"], function (_, Measure, Reporter) {
+define("index", ["lodash", "util/measure", "util/reporter"], function (_, Measure, Reporter) {
 
     var moduleList = {
         "loop": [
             "forCountLoop",
             "forInLoop",
-            "underscoreEach"
+            "underscoreEach",
+            "lodashEach"
         ]
     };
 
@@ -34,6 +35,8 @@ define("index", ["underscore", "util/measure", "util/reporter"], function (_, Me
     Index.prototype.start = function (callback) {
         var measure = new Measure();
         var reporter = new Reporter();
+
+        _.noConflict();
 
         console.info("Starting performance tests...");
 

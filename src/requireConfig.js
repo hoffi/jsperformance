@@ -1,8 +1,8 @@
 requirejs.config({
     baseUrl: "src",
     paths: {
-        underscore: '../node_modules/underscore/underscore-min',
-        lodash: '../node_modules/lodash/lodash.min',
+        underscore: '../lib/underscore-min',
+        lodash: '../lib/lodash.min',
         uaparser: '../lib/ua-parser.min'
     },
     shim: {

@@ -1,24 +1,24 @@
 // Duration     1520
 // Throughput   6 579
-define("loop/underscoreEach", ["underscore"], function (_) {
+define("loop/lodashEach", ["lodash"], function (_) {
 
-    var UnderscoreEach = function () {
+    var LodashEach = function () {
         this.array = [];
         this.count = 1000000;
     };
 
-    UnderscoreEach.prototype.prepare = function () {
+    LodashEach.prototype.prepare = function () {
         for (var j = 0; j < this.count; j++) {
             this.array.push(j);
         }
     };
 
-    UnderscoreEach.prototype.run = function () {
+    LodashEach.prototype.run = function () {
         var a = {};
         _.each(this.array, function (i) {
             a[i] = i + 1;
         });
     };
 
-    return new UnderscoreEach();
+    return new LodashEach();
 });

@@ -2,6 +2,8 @@ var _index;
 
 describe("execute", function() {
     beforeAll(function (done) {
+        window.lodash = _.noConflict();
+
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
         done();
     });
