@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "clean": "if exist dist rmdir /S /Q dist",
+    "clean": "node node_modules/rimraf/bin.js dist",
     "compile": "npm run clean && node node_modules/typescript/bin/tsc && copy src\\requireConfig.js dist",
     "test-firefox": "npm run compile && node node_modules/karma/bin/karma start --browser Firefox",
     "test-edge": "npm run compile && node node_modules/karma/bin/karma start --browser Edge",
@@ -27,6 +27,7 @@
     "karma-phantomjs-launcher": "~1.0.2",
     "karma-requirejs": "~1.1.0",
     "karma-sauce-launcher": "~1.1.0",
+    "rimraf": "~2.5.4",
     "typescript": "~2.0.10"
   },
   "dependencies": {
