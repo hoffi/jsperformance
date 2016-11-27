@@ -1,7 +1,8 @@
 /// <amd-module name="util/Measure"/>
 
-import {TestCase} from "../TestCase";
+import {TestCase} from "../data/TestCase";
 import UAParser = require("uaparser");
+import {TestResult} from "../data/TestResult";
 
 export class Measure {
 
@@ -12,15 +13,15 @@ export class Measure {
         return a.browser.name + " " + a.browser.version + "; " + a.os.name + " " + a.os.version;
     }
 
-    public run(name: string, group: string, testModule: TestCase, callback: Function): void {
+    public run(name: string, group: string, testModule: TestCase, callback: (result: TestResult) => void): void {
         if (testModule.prepare) {
             testModule.prepare();
         }
 
-        var startDate = new Date();
+        var startDate: Date = new Date();
         testModule.run();
-        var duration = new Date().getMilliseconds() - startDate.getMilliseconds();
-        var throughput = (testModule.count / duration).toFixed(3);
+        var duration: number = new Date().getMilliseconds() - startDate.getMilliseconds();
+        var throughput: string = (testModule.count / duration).toFixed(3);
 
         if (testModule.clean) {
             testModule.clean();

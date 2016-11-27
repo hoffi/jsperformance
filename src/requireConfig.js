@@ -3,7 +3,8 @@ requirejs.config({
     paths: {
         underscore: '../lib/underscore-min',
         lodash: '../lib/lodash.min',
-        uaparser: '../lib/ua-parser.min'
+        uaparser: '../lib/ua-parser.min',
+        downloadjs: '../lib/download.min'
     },
     shim: {
         'underscore': {

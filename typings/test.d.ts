@@ -6,3 +6,6 @@ declare module "uaparser" {
         getResult(): any;
     }
 }
+
+declare module "downloadjs" {
+}

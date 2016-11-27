@@ -5,6 +5,7 @@ module.exports = {
     files: [
         'lib/require.js',
         'lib/ua-parser.min.js',
+        'lib/download.min.js',
         'lib/underscore-min.js',
         'lib/lodash.min.js',
         {pattern: 'dist/**/*.js', included: true},

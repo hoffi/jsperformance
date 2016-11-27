@@ -1,6 +1,6 @@
-/// <amd-module name="loop/ForCountLoop"/>
+/// <amd-module name="tests/loop/ForCountLoop"/>
 
-import {TestCase} from "../TestCase";
+import {TestCase} from "../../data/TestCase";
 
 export class ForCountLoop implements TestCase {
 

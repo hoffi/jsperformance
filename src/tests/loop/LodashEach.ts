@@ -1,8 +1,9 @@
-/// <amd-module name="loop/ForInLoop"/>
+/// <amd-module name="tests/loop/LodashEach"/>
 
-import {TestCase} from "../TestCase";
+import * as _ from "lodash";
+import {TestCase} from "../../data/TestCase";
 
-export class ForInLoop implements TestCase {
+export class LodashEach implements TestCase {
 
     private array: number[] = [];
     public count: number = 1000000;
@@ -15,8 +16,8 @@ export class ForInLoop implements TestCase {
 
     public run(): void {
         var a = {};
-        for (var i in this.array) {
+        _.each(this.array, function (i) {
             a[i] = i + 1;
-        }
+        });
     }
 }

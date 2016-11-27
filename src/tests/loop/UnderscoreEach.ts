@@ -1,7 +1,7 @@
-/// <amd-module name="loop/UnderscoreEach"/>
+/// <amd-module name="tests/loop/UnderscoreEach"/>
 
 import * as _ from "underscore";
-import {TestCase} from "../TestCase";
+import {TestCase} from "../../data/TestCase";
 
 export class UnderscoreEach implements TestCase {
 
