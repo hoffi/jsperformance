@@ -3,31 +3,24 @@
 import {Measure} from "./util/Measure";
 import {Reporter} from "./util/Reporter";
 import * as _ from "lodash";
+import * as testModules from "./TestModules";
 
 export class Index {
-
-    private moduleList: any = {
-        "loop": [
-            "ForCountLoop",
-            "ForInLoop",
-            "UnderscoreEach",
-            "LodashEach"
-        ]
-    };
 
     private moduleMap: any = {};
 
     public initialize(callback: Function): void {
         var moduleNameList = [];
+        var global: any = window;
 
-        var groups = Object.keys(this.moduleList);
+        var groups = Object.keys(testModules);
         _.each(groups, (group) => {
-            var list = this.moduleList[group];
+            var list = testModules[group];
             list = _.map(list, (e) => group + "/" + e);
             moduleNameList = moduleNameList.concat(list);
         });
 
-        (<any>window).require(moduleNameList, function () {
+        global.require(moduleNameList, function () {
             for (var i = 0; i < arguments.length; i++) {
                 var wrapper = arguments[i];
                 var ctor = wrapper[Object.keys(wrapper)[0]];
