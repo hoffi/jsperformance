@@ -9,9 +9,9 @@ describe("execute", function() {
     });
 
     beforeEach(function (done) {
-        require(["index"], function (index) {
-            _index = index;
-            index.initialize(done);
+        require(["Index"], function (Index) {
+            _index = new Index.Index();
+            _index.initialize(done);
         });
     });
 

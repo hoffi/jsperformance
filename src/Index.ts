@@ -1,38 +1,44 @@
-define("index", ["lodash", "util/measure", "util/reporter"], function (_, Measure, Reporter) {
+/// <amd-module name="Index"/>
 
-    var moduleList = {
+import {Measure} from "./util/Measure";
+import {Reporter} from "./util/Reporter";
+import * as _ from "lodash";
+
+export class Index {
+
+    private moduleList: any = {
         "loop": [
-            "forCountLoop",
-            "forInLoop",
-            "underscoreEach",
-            "lodashEach"
+            "ForCountLoop",
+            "ForInLoop",
+            "UnderscoreEach",
+            "LodashEach"
         ]
     };
 
-    var Index = function () {
-        this.moduleMap = {};
-    };
+    private moduleMap: any = {};
 
-    Index.prototype.initialize = function (callback) {
+    public initialize(callback: Function): void {
         var moduleNameList = [];
 
-        var groups = Object.keys(moduleList);
-        _.each(groups, function (group) {
-            var list = moduleList[group];
-            list = _.map(list, function (e) { return group + "/" + e; });
+        var groups = Object.keys(this.moduleList);
+        _.each(groups, (group) => {
+            var list = this.moduleList[group];
+            list = _.map(list, (e) => group + "/" + e);
             moduleNameList = moduleNameList.concat(list);
         });
 
-        require(moduleNameList, function () {
+        (<any>window).require(moduleNameList, function () {
             for (var i = 0; i < arguments.length; i++) {
-                this.moduleMap[moduleNameList[i]] = arguments[i];
+                var wrapper = arguments[i];
+                var ctor = wrapper[Object.keys(wrapper)[0]];
+                this.moduleMap[moduleNameList[i]] = new ctor();
             }
 
             callback();
         }.bind(this));
-    };
+    }
 
-    Index.prototype.start = function (callback) {
+    public start(callback: Function): void {
         var measure = new Measure();
         var reporter = new Reporter();
 
@@ -41,7 +47,7 @@ define("index", ["lodash", "util/measure", "util/reporter"], function (_, Measur
         console.info("Starting performance tests...");
 
         var moduleNames = Object.keys(this.moduleMap);
-        _.each(moduleNames, function (fullName) {
+        _.each(moduleNames, (fullName) => {
             var instance = this.moduleMap[fullName];
             var name = fullName.substr(fullName.lastIndexOf("/") + 1);
             var group = fullName.substr(0, fullName.lastIndexOf("/"));
@@ -49,14 +55,11 @@ define("index", ["lodash", "util/measure", "util/reporter"], function (_, Measur
             measure.run(name, group, instance, function (result) {
                 reporter.report(result);
             });
-        }.bind(this));
+        });
 
         console.info("Successfully executed " + moduleNames.length + " performance tests!");
         if (callback) {
             callback();
         }
-    };
-
-    return new Index();
-});
-
+    }
+}

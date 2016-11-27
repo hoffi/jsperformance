@@ -15,12 +15,14 @@
 <textarea id="resultArea"></textarea>
 
 <script src="lib/require.js" type="text/javascript"></script>
+<script src="lib/ua-parser.min.js" type="text/javascript"></script>
 <script src="src/requireConfig.js" type="text/javascript"></script>
 
 <script>
-    require(["index"], function (index) {
-        index.initialize(function () {
-            index.start();
+    require(["Index"], function (Index) {
+        var i = new Index.Index();
+        i.initialize(function () {
+            i.start();
         });
     });
 </script>

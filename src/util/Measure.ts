@@ -1,23 +1,25 @@
-define("util/measure", ["uaparser"], function (UAParser) {
+/// <amd-module name="util/Measure"/>
 
-    function getBrowser() {
-        var parser = new UAParser();
+import {TestCase} from "../TestCase";
+import UAParser = require("uaparser");
+
+export class Measure {
+
+    private getBrowser(): string {
+        var parser = new (<any>UAParser)();
         parser.setUA(window.navigator.userAgent);
         var a = parser.getResult();
         return a.browser.name + " " + a.browser.version + "; " + a.os.name + " " + a.os.version;
     }
 
-    var Measure = function () {
-    };
-
-    Measure.prototype.run = function (name, group, testModule, callback) {
+    public run(name: string, group: string, testModule: TestCase, callback: Function): void {
         if (testModule.prepare) {
             testModule.prepare();
         }
 
         var startDate = new Date();
         testModule.run();
-        var duration = new Date() - startDate;
+        var duration = new Date().getMilliseconds() - startDate.getMilliseconds();
         var throughput = (testModule.count / duration).toFixed(3);
 
         if (testModule.clean) {
@@ -30,9 +32,7 @@ define("util/measure", ["uaparser"], function (UAParser) {
             duration: duration,
             count: testModule.count,
             throughput: throughput,
-            agent: getBrowser()
+            agent: this.getBrowser()
         });
-    };
-
-    return Measure;
-});
+    }
+}

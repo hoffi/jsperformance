@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: "src",
+    baseUrl: "dist",
     paths: {
         underscore: '../lib/underscore-min',
         lodash: '../lib/lodash.min',

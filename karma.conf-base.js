@@ -7,7 +7,7 @@ module.exports = {
         'lib/ua-parser.min.js',
         'lib/underscore-min.js',
         'lib/lodash.min.js',
-        {pattern: 'src/**/*.js', included: true},
+        {pattern: 'dist/**/*.js', included: true},
         'test/testMain.js'
     ],
     reporters: ['dots'],
