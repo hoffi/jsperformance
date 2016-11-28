@@ -4,7 +4,10 @@ var testModules: any = {
     loop: [
         "ForCountLoop",
         "ForInLoop",
+        "ForEachLoop",
+        "WhileLoop",
         "UnderscoreEach",
+        "Map",
         "LodashEach"
     ]
 };
